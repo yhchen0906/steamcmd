@@ -15,6 +15,8 @@ RUN set -x; \
     locales && \
   sed -E 's;^# (en_US\.UTF-8.*)$;\1;g' -i /etc/locale.gen && \
   locale-gen && \
+  mkdir -p ~/.steam/sdk32 && \
+  ln -s "${STEAMROOT}/linux32/steamclient.so" ~/.steam/sdk32 && \
   ln -s "${STEAMROOT}/linux32/steamclient.so" /usr/lib/i386-linux-gnu && \
   ln -s "${STEAMROOT}/linux64/steamclient.so" /usr/lib/x86_64-linux-gnu && \
   rm -rf /var/lib/apt/lists
